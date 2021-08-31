@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class AirPort {
+public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -18,10 +18,10 @@ public class AirPort {
     private String name;
     private  String place;
 
-    public AirPort() {
+    public Airport() {
     }
 
-    public AirPort(int id, String name, String place) {
+    public Airport(int id, String name, String place) {
         this.id = id;
         this.name = name;
         this.place = place;
