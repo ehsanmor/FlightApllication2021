@@ -1,15 +1,15 @@
 package com.example.flightapp.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class AirPort {
+public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -18,10 +18,15 @@ public class AirPort {
     private String name;
     private  String place;
 
-    public AirPort() {
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "airports")
+    private List<Airplane> airplanes =new ArrayList<>();
+
+    public Airport() {
     }
 
-    public AirPort(int id, String name, String place) {
+    public Airport(int id, String name, String place) {
         this.id = id;
         this.name = name;
         this.place = place;
